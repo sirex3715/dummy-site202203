@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8">
+    <title><%= title %></title>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" />
+    <link rel='stylesheet' href='/stylesheets/style.css' />
+  </head>
+  <body class="container">
+    <header>
+      <h1><%= title %></h1>
+    </header>
+    <div role="main">
+      <form method="post" action="/login">
+        <div class="form-group">
+          <label for="mail">メールアドレス</label>
+          <input type="text" name="mail" id="mail" class="form-control">
+        </div>
+        <div class="form-group">
+          <label for="pass">パスワード</label>
+          <input type="password" name="pass" id="pass" class="form-control">
+        </div>
+        <input type="submit" value="登録" class="btn btn-primary">
+      </form>
+      <a href="/register">新規会員登録はこちら</a>
+    </div>
+  </body>
+</html>

@@ -13,7 +13,7 @@ initializeApp({
 });
 */
 
-const db = getFirestore();
+// const db = getFirestore();
 
 router.get("/", (req, res, next) => {
     var data = {
@@ -23,6 +23,7 @@ router.get("/", (req, res, next) => {
 });
 
 router.post("/", async(req, res, next) => {
+    /*
     const ml = req.body.mail;
     const pw = req.body.pass;
 
@@ -34,8 +35,9 @@ router.post("/", async(req, res, next) => {
     } else {
         console.log(user.data())
     }
+    */
 
-    // res.redirect("/");
+    res.redirect("/");
 })
 
 module.exports = router;

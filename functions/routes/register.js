@@ -4,6 +4,7 @@ const session = require('express-session');
 const bodyParser = require('body-parser');
 const { initializeApp, applicationDefault, cert } = require('firebase-admin/app');
 const { getFirestore, Timestamp, FieldValue } = require('firebase-admin/firestore');
+import { registerUser } from "./auth.js";
 
 /*
 var serviceAccount = require("../dummy-site01-firebase-adminsdk-19m3k-e13163bf84.json");
@@ -13,7 +14,7 @@ initializeApp({
 });
 */
 
-const db = getFirestore();
+// const db = getFirestore();
 
 router.get("/", (req, res, next) => {
     var data = {
@@ -27,22 +28,10 @@ router.post("/", async(req, res, next) => {
     const nm = req.body.name;
     const pw = req.body.pass;
 
-    const userRes = await db.collection("user").add({
-        mail: ml,
-        name: nm,
-        pass: pw,
-        point: 0
-    })
-
-    console.log('Added document with ID: ', userRes.id);
-
-    req.session.regenerate((err) => {
-        //req.session.username = nm;
-        req.session.userid = userRes.id;
-        res.redirect('/');
-    });
-
-    // res.redirect("/");
+    const result = registerUser(ml, pw);
+    console.log(result);
+    
+    res.redirect("/");
 })
 
 module.exports = router;
